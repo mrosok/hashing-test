@@ -1,0 +1,38 @@
+ //ENDRING FOR LAST-COME-FIRST-SERVED
+
+    String oldValue = null;
+
+    //HVIS VI KOLLIDERER, TA VARE PÅ GAMMEL VERDI OG SETT NY VERDI INN PÅ INDEKSEN
+	if (hashTabell[neste] != null) {
+        oldValue = hashTabell[neste];
+        hashTabell[neste] = S;
+
+
+        while (hashTabell[neste] != null) {
+
+            // Ny probe
+            antProbes++;
+
+            // Denne indeksen er opptatt, prøver neste
+            neste++;
+
+            // Wrap-around
+            if (neste >= hashLengde)
+                neste = 0;
+
+            // Hvis vi er kommet tilbake til opprinnelig hashverdi, er
+            // tabellen full og vi gir opp (her ville man normalt
+            // doblet lengden på hashtabellen og gjort en rehashing)
+            if (neste == h) {
+                System.err.println("\nHashtabell full, avbryter");
+                System.exit(0);
+            }
+        }
+        //LAGRER GAMMEL VERDI PÅ NY INDEKS
+        hashTabell[neste] = oldValue;
+
+        //HVIS VI IKKE KOLLIDERER KAN INDEKSEN LAGRES VANLIG
+    } else {
+        hashTabell[neste] = S;
+    }
+}
