@@ -3,7 +3,7 @@ package no.martr;
 import java.io.*;
 import java.util.Scanner;
 
-// OPPGAVE 3 - delete() lagt til originalkoden
+// OPPGAVE 3 - delete(String S) lagt til originalkoden
 
 // Hashing av tekststrenger med kjeding i lenket liste
 // Bruker Javas innebygde hashfunksjon for strenger

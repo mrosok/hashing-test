@@ -3,7 +3,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-// OPPGAVE 2 - Robin Hood (endringer i linje 84-91)
+// OPPGAVE 2 - Robin Hood (endringer i linje 84-96)
 
 // Hashing av tekststrenger med lineær probing
 // Bruker Javas innebygde hashfunksjon for strenger
@@ -81,8 +81,17 @@ public class hashLinearRobinHood
 
             //ENDRING FOR ROBIN HOOD
             // avstanden fra nodene til sin opprinnelige hash-index
-            int distanceT = neste - hash(hashTabell[neste]);
+
             int distanceS = neste - hash(S);
+            // S har gjort en wrap-around
+            if (distanceS < 0)
+                distanceS = hashLengde - hash(S) + neste;
+
+            int distanceT = neste - hash(hashTabell[neste]);
+            // T har gjort en wrap-around
+            if (distanceT < 0)
+                distanceT = hashLengde - hash(hashTabell[neste]) + neste;
+
 
             if (distanceS > distanceT) {
                 String tmp = hashTabell[neste];
